@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -79,18 +80,33 @@ public class NewMeetingActivity extends AppCompatActivity implements View.OnClic
 
                         mHour = pHour;
                         mMinute = pMinute;
+//
+//                        if (isStartTime) {
+//
+//                            mStartTime = String.format("%s:%s", mHour, mMinute);
+//                            mBinding.btnStartTime.setText(mStartTime);
+//
+//                        } else {
+//                            mEndTime = String.format("%s:%s", mHour, mMinute);
+//                            mBinding.btnEndTime.setText(mEndTime);
+//                        }
+
+                        boolean isPM = (pHour >= 12);
+                        String time = String.format("%02d:%02d %s",
+                                (pHour == 12 || pHour == 0) ? 12 : pHour % 12, pMinute, isPM ? "PM" : "AM");
 
                         if (isStartTime) {
 
-                            mStartTime = String.format("%s:%s", mHour, mMinute);
-                            mBinding.btnStartTime.setText(mStartTime);
+                            mStartTime = get24Hour(time);
+                            mBinding.btnStartTime.setText(time);
 
                         } else {
-                            mEndTime = String.format("%s:%s", mHour, mMinute);
-                            mBinding.btnEndTime.setText(mEndTime);
+                            mEndTime = get24Hour(time);
+                            mBinding.btnEndTime.setText(time);
                         }
+
                     }
-                }, mHour, mMinute, true);
+                }, mHour, mMinute, false);
         timePickerDialog.show();
     }
 
@@ -134,6 +150,19 @@ public class NewMeetingActivity extends AppCompatActivity implements View.OnClic
 
         }
     };
+
+    public String get24Hour(String time) {
+        try {
+            final SimpleDateFormat sdf = new SimpleDateFormat("hh:mm a", Locale.getDefault());
+            Date dateObj = sdf.parse(time);
+            assert dateObj != null;
+            return new SimpleDateFormat("H:mm", Locale.getDefault()).format(dateObj);
+
+        } catch (final ParseException e) {
+            e.printStackTrace();
+            return "";
+        }
+    }
 
     public void processSubmit() {
 
@@ -182,9 +211,6 @@ public class NewMeetingActivity extends AppCompatActivity implements View.OnClic
         }
 
     }
-
-
-
 
 
     private void fetchData(String date) {
