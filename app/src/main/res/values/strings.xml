@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Meeting</string>
+
+    <string name="prev">PREV</string>
+    <string name="next">NEXT</string>
+    <string name="date">16–05–2010</string>
+    <string name="alert">Alert!</string>
+    <string name="no_network">No network found.</string>
+    <string name="api_failed">Unable to get response.</string>
+    <string name="no_meetings_found">No meetings found for this date.</string>
+    <string name="sample_time">10.00 AM - 11.00 AM</string>
+    <string name="schedule_meeting">Schedule New Meeting</string>
+    <string name="sample_users">Rajat\nJohn\nAdam</string>
+    <string name="sample_desc">Designing team of Sh**dli project will share their experience with the new team members.</string>
+
+
+</resources>
