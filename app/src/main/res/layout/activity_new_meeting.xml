@@ -28,13 +28,33 @@
                     android:orientation="horizontal">
 
 
-                    <ImageButton
+                    <LinearLayout
                         android:id="@+id/btn_close"
-                        android:layout_width="?attr/actionBarSize"
-                        android:layout_height="?attr/actionBarSize"
-                        android:background="?attr/selectableItemBackgroundBorderless"
-                        android:src="@drawable/ic_close"
-                        android:tint="@android:color/white" />
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="start|center"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:background="@drawable/ic_prev"
+                            android:gravity="center" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/roboto_regular"
+                            android:gravity="center"
+                            android:text="BACK"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
 
                     <TextView
                         android:id="@+id/nameToolbar"
@@ -46,7 +66,7 @@
                         android:text="@string/schedule_meeting"
                         android:textAppearance="@style/TextAppearance.AppCompat.Title"
                         android:textColor="@android:color/white"
-                        android:textSize="16sp" />
+                        android:textSize="14sp" />
 
                     <ImageButton
                         android:id="@+id/btn_create"
@@ -74,12 +94,15 @@
                     android:layout_marginStart="60dp"
                     android:layout_marginTop="32dp"
                     android:layout_marginEnd="60dp"
-                    android:textColor="@color/colorPrimaryLight"
+                    android:gravity="end"
+                    android:layoutDirection="rtl"
+                    android:textColor="@color/colorTextSecondary"
                     app:backgroundTint="@color/colorGrey"
+                    app:icon="@drawable/ic_arrow_drop_down_black_24dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:strokeColor="@color/colorGreyTint"
+                    app:strokeColor="@color/editTextTint"
                     app:strokeWidth="1dp" />
 
                 <com.google.android.material.button.MaterialButton
@@ -88,13 +111,16 @@
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="16dp"
-                    android:hint="Start Time"
-                    android:textColor="@color/colorPrimaryLight"
+                    android:gravity="end"
+                    android:hint="@string/start_time"
+                    android:layoutDirection="rtl"
+                    android:textColor="@color/colorTextSecondary"
                     app:backgroundTint="@color/colorGrey"
+                    app:icon="@drawable/ic_arrow_drop_down_black_24dp"
                     app:layout_constraintEnd_toEndOf="@+id/btn_date"
                     app:layout_constraintStart_toStartOf="@+id/btn_date"
                     app:layout_constraintTop_toBottomOf="@+id/btn_date"
-                    app:strokeColor="@color/colorGreyTint"
+                    app:strokeColor="@color/editTextTint"
                     app:strokeWidth="1dp" />
 
                 <com.google.android.material.button.MaterialButton
@@ -103,13 +129,16 @@
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="16dp"
-                    android:hint="End Time"
-                    android:textColor="@color/colorPrimaryLight"
+                    android:gravity="end"
+                    android:hint="@string/end_time"
+                    android:layoutDirection="rtl"
+                    android:textColor="@color/colorTextSecondary"
                     app:backgroundTint="@color/colorGrey"
+                    app:icon="@drawable/ic_arrow_drop_down_black_24dp"
                     app:layout_constraintEnd_toEndOf="@+id/btn_start_time"
                     app:layout_constraintStart_toStartOf="@+id/btn_start_time"
                     app:layout_constraintTop_toBottomOf="@+id/btn_start_time"
-                    app:strokeColor="@color/colorGreyTint"
+                    app:strokeColor="@color/editTextTint"
                     app:strokeWidth="1dp" />
 
                 <com.google.android.material.textfield.TextInputLayout

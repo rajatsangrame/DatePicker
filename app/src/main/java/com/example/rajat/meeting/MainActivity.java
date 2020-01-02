@@ -3,11 +3,11 @@ package com.example.rajat.meeting;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.util.Log;
@@ -17,8 +17,6 @@ import com.example.rajat.meeting.databinding.ActivityMainBinding;
 import com.example.rajat.meeting.model.Meeting;
 import com.example.rajat.meeting.network.RetrofitApiClient;
 import com.example.rajat.meeting.utils.Helper;
-import com.google.android.material.bottomsheet.BottomSheetBehavior;
-import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.gson.Gson;
 
 import java.util.Calendar;
@@ -58,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Calendar calendar = Calendar.getInstance();
         Date today = calendar.getTime();
         String date = DateFormat.format("dd-MM-yyyy", today).toString();
-        mBinding.title.setText(date);
+        updateTitle(date, today);
         fetchData(date);
         mCurrentDate = today;
 
@@ -71,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         calendar.add(Calendar.DAY_OF_YEAR, mTempCount);
         Date nextDay = calendar.getTime();
         String date = DateFormat.format("dd-MM-yyyy", nextDay).toString();
-        mBinding.title.setText(date);
+        updateTitle(date, nextDay);
         fetchData(date);
         mCurrentDate = nextDay;
 
@@ -84,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         calendar.add(Calendar.DAY_OF_YEAR, mTempCount);
         Date prevDay = calendar.getTime();
         String date = DateFormat.format("dd-MM-yyyy", prevDay).toString();
-        mBinding.title.setText(date);
+        updateTitle(date, prevDay);
         fetchData(date);
         mCurrentDate = prevDay;
     }
@@ -167,6 +165,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (requestCode == ADD_NEW_MEETING) {
 
             //update the list
+        }
+    }
+
+    private void updateTitle(String dateString, Date date) {
+
+        int orientation = getResources().getConfiguration().orientation;
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            String s = DateFormat.format("EEEE, dd-MM-yyyy", date).toString().toUpperCase();
+            mBinding.title.setText(s);
+
+        } else {
+            mBinding.title.setText(dateString);
         }
     }
 }

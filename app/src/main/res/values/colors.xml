@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimaryDark">#5677FC</color>
-    <color name="colorPrimary">#839BFD</color>
-    <color name="colorAccent">#839BFD</color>
-    <color name="colorPrimaryLight">#6d6d6d</color>
+    <color name="colorPrimaryDark">#037f51</color>
+    <color name="colorPrimary">#16A085</color>
+    <color name="colorAccent">#16A085</color>
+    <color name="colorPrimaryLight">#CCCCCC</color>
 
 
-    <color name="colorGrey">#F0F0F0</color>
+    <color name="colorGrey">#EEEEEE</color>
     <color name="colorGreyTint">#787878</color>
 
+    <color name="editTextTint">#CCCCCC</color>
 
-    <color name="colorWhite">#F5F5F5</color>
+
+    <color name="colorWhite">#F7F7F7</color>
     <color name="colorTextPrimary">#ffffff</color>
     <color name="colorTextSecondary">#1A1A1A</color>
     <color name="cardBackground">#ddd</color>
-    <color name="recyclerViewDivider">#61ced7db</color>
+    <color name="recyclerViewDivider">#A9A9A9</color>
     <color name="gradient_start">#7f000000</color>
     <color name="gradient_end">#00000000</color>
     <color name="option_item_tint_color">#ad000000</color>
