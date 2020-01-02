@@ -65,7 +65,7 @@ public class NewMeetingActivity extends AppCompatActivity implements View.OnClic
             mBinding.btnSubmit.setEnabled(false);
         }
         mDate = DateFormat.format("dd-MM-yyyy", date).toString();
-        mBinding.btnDate.setText(mDate);
+        mBinding.tvDate.setText(mDate);
 
     }
 
@@ -98,11 +98,11 @@ public class NewMeetingActivity extends AppCompatActivity implements View.OnClic
                         if (isStartTime) {
 
                             mStartTime = get24Hour(time);
-                            mBinding.btnStartTime.setText(time);
+                            mBinding.tvStartTime.setText(time);
 
                         } else {
                             mEndTime = get24Hour(time);
-                            mBinding.btnEndTime.setText(time);
+                            mBinding.tvEndTime.setText(time);
                         }
 
                     }
@@ -146,7 +146,7 @@ public class NewMeetingActivity extends AppCompatActivity implements View.OnClic
 
             Log.d("onDateSet", month + "/" + day + "/" + year);
             mDate = String.format("%s-%s-%s", day, month, year);
-            mBinding.btnDate.setText(mDate);
+            mBinding.tvDate.setText(mDate);
 
         }
     };
@@ -166,17 +166,17 @@ public class NewMeetingActivity extends AppCompatActivity implements View.OnClic
 
     public void processSubmit() {
 
-        if (mBinding.btnStartTime.getText().length() == 0) {
+        if (mBinding.tvStartTime.getText().length() == 0) {
 
             Helper.showAlert(this, "Select the Start Time");
             return;
 
-        } else if (mBinding.btnEndTime.getText().length() == 0) {
+        } else if (mBinding.tvEndTime.getText().length() == 0) {
 
             Helper.showAlert(this, "Select the End Time");
             return;
 
-        } else if (mBinding.btnStartTime.getText().toString().equals(mBinding.btnEndTime.getText().toString())) {
+        } else if (mBinding.tvStartTime.getText().toString().equals(mBinding.tvEndTime.getText().toString())) {
 
             Helper.showAlert(this, "Start & End Time is same");
             return;
