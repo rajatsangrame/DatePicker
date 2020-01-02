@@ -241,9 +241,9 @@ public class NewMeetingActivity extends AppCompatActivity implements View.OnClic
                 boolean isSlotValid = true;
                 SimpleDateFormat sdf = new SimpleDateFormat("hh:mm", Locale.getDefault());
 
-                for (Meeting meeting : list) {
+                try {
+                    for (Meeting meeting : list) {
 
-                    try {
                         Date meetStartTime = sdf.parse(meeting.getStartTime());
                         Date meetEndTime = sdf.parse(meeting.getEndTime());
 
@@ -252,13 +252,26 @@ public class NewMeetingActivity extends AppCompatActivity implements View.OnClic
                                 ((eTime.after(meetStartTime) && eTime.before(meetEndTime)))) {
 
                             isSlotValid = false;
+                        }
+                    }
+
+                    for (Meeting meeting2 : list) {
+
+                        Date meetStartTime2 = sdf.parse(meeting2.getStartTime());
+                        Date meetEndTime2 = sdf.parse(meeting2.getEndTime());
+
+
+                        if ((meetStartTime2.after(sTime) && meetStartTime2.before(eTime))
+                                ||
+                                ((meetEndTime2.after(sTime) && meetEndTime2.before(eTime)))) {
+
+                            isSlotValid = false;
 
                         }
 
-                    } catch (ParseException e) {
-                        e.printStackTrace();
                     }
-
+                } catch (ParseException | NullPointerException e) {
+                    e.printStackTrace();
                 }
 
                 if (isSlotValid) {
